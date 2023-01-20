@@ -37,20 +37,20 @@ const { sequelize } = require('./models/index');
     //sync all models with the database
     await sequelize.sync();
     console.log("All models were synchronized successfully.");
-  } catch (error) {
+  } catch (error) { 
     console.error('Unable to connect to the database:', error);
   }
 })();
 
 // Route file paths
-//const indexRouter = require('./routes/index');
-//const usersRouter = require('./routes/users');
-//const coursesRouter = require('./routes/courses');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const coursesRouter = require('./routes/courses');
 
 // Paths and routes to use together
-//app.use('/', indexRouter);
-//app.use('/api/users', usersRouter);
-//app.use('/api/courses', coursesRouter);
+app.use('/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/courses', coursesRouter);
 
 // send 404 if no other route matched
 app.use((req, res) => {
